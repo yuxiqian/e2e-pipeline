@@ -1,0 +1,15 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+      MYSQL_DATABASE: "reicigo"
+    ports:
+      - "13306:3306"
+
+  starrocks:
+   image: starrocks/allin1-ubuntu:3.2.6
+   ports:
+     - "18080:8080"
+     - "19030:9030"
