@@ -40,9 +40,7 @@ puts 'Waiting for sink to start up...'
 next until exec_sql_sink("SELECT '1';") == "'1'\n1\n"
 
 puts 'Waiting for sink to start up...'
-loop do
-  break if exec_sql_sink('SHOW BACKENDS\\G').include? '*************************** 1. row ***************************'
-end
+next until exec_sql_sink('SHOW BACKENDS\\G').include? '*************************** 1. row ***************************'
 
 exec_sql_sink("DROP DATABASE IF EXISTS #{DATABASE_NAME};")
 # Doris connector doesn't automatically creates database for now
